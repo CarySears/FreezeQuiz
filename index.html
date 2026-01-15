@@ -204,6 +204,50 @@
         margin-bottom: 0.6rem;
       }
 
+      .vsl-grid {
+        display: grid;
+        grid-template-columns: minmax(280px, 1.35fr) minmax(240px, 1fr);
+        gap: 2rem;
+        align-items: center;
+      }
+
+      .vsl-frame {
+        position: relative;
+        padding-top: 56.25%;
+        background: #101526;
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow);
+        overflow: hidden;
+      }
+
+      .vsl-frame iframe,
+      .vsl-frame video {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
+
+      .vsl-placeholder {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1.5rem;
+        text-align: center;
+        color: #f8f4f0;
+        font-weight: 600;
+        letter-spacing: 0.4px;
+      }
+
+      .vsl-note {
+        margin-top: 0.9rem;
+        color: var(--ink-soft);
+        font-size: 0.95rem;
+      }
+
       .bio-grid {
         display: grid;
         grid-template-columns: minmax(220px, 280px) 1fr;
@@ -345,6 +389,10 @@
           padding: 2rem;
         }
 
+        .vsl-grid {
+          grid-template-columns: 1fr;
+        }
+
         .bio-grid {
           grid-template-columns: 1fr;
         }
@@ -407,6 +455,32 @@
                 Confidential. Trauma-informed. No graphic questions.
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="vsl">
+        <div class="container vsl-grid">
+          <div class="vsl-frame">
+            <div class="vsl-placeholder">
+              VSL placeholder: paste your video embed or iframe here.
+            </div>
+          </div>
+          <div>
+            <h2>Watch the short overview</h2>
+            <p class="lead">
+              In a few minutes, you will understand why freeze happens, what thaw means, and how this quiz gives you a
+              calm + clarity plan built for your nervous system.
+            </p>
+            <ul class="list">
+              <li>Why you feel frozen and stuck even when you try hard.</li>
+              <li>What "thaw" looks like in real life.</li>
+              <li>How your results guide a gentle, trauma-informed path forward.</li>
+            </ul>
+            <div class="hero-cta" style="margin-top: 1.4rem">
+              <a class="btn" href="#quiz">Start the quiz for calm + clarity</a>
+            </div>
+            <p class="vsl-note">Trauma-informed. No graphic questions. You are in control of your pace.</p>
           </div>
         </div>
       </section>
