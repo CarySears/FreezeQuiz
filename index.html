@@ -204,6 +204,230 @@
         margin-bottom: 0.6rem;
       }
 
+      .quiz-card {
+        background: var(--white);
+        border-radius: var(--radius-lg);
+        padding: 2.4rem;
+        box-shadow: var(--shadow);
+        margin-top: 2rem;
+      }
+
+      .quiz-progress {
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+        margin-bottom: 1.6rem;
+      }
+
+      .quiz-step {
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: var(--ink-soft);
+      }
+
+      .quiz-bar {
+        height: 8px;
+        background: rgba(27, 31, 59, 0.08);
+        border-radius: 999px;
+        overflow: hidden;
+      }
+
+      .quiz-bar-fill {
+        height: 100%;
+        width: 20%;
+        background: linear-gradient(90deg, var(--teal), var(--coral));
+        transition: width 0.3s ease;
+      }
+
+      .quiz-question {
+        margin: 0 0 1rem;
+        font-size: 1.4rem;
+      }
+
+      .quiz-options {
+        display: grid;
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+      }
+
+      .quiz-option {
+        border: 1px solid rgba(27, 31, 59, 0.12);
+        border-radius: var(--radius-md);
+        padding: 0.9rem 1.1rem;
+        background: var(--white);
+        text-align: left;
+        cursor: pointer;
+        font-weight: 600;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+      }
+
+      .quiz-option:hover {
+        border-color: var(--teal);
+        box-shadow: 0 8px 20px rgba(27, 31, 59, 0.1);
+        transform: translateY(-1px);
+      }
+
+      .quiz-option.selected {
+        border-color: var(--coral);
+        background: rgba(240, 110, 95, 0.08);
+      }
+
+      .quiz-skip {
+        background: none;
+        border: none;
+        color: var(--ink-soft);
+        text-decoration: underline;
+        cursor: pointer;
+        font-size: 0.95rem;
+      }
+
+      .quiz-nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 1.4rem;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .quiz-form {
+        display: grid;
+        gap: 1.2rem;
+      }
+
+      .form-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1rem;
+      }
+
+      .form-field label {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 0.4rem;
+      }
+
+      .form-field input {
+        width: 100%;
+        padding: 0.7rem 0.85rem;
+        border-radius: var(--radius-sm);
+        border: 1px solid rgba(27, 31, 59, 0.2);
+        font-size: 1rem;
+        font-family: inherit;
+      }
+
+      .form-helper {
+        color: var(--ink-soft);
+        font-size: 0.9rem;
+        margin: 0;
+      }
+
+      .quiz-results {
+        position: relative;
+        display: grid;
+        gap: 1rem;
+      }
+
+      .result-primary {
+        position: relative;
+        background: linear-gradient(135deg, rgba(105, 198, 192, 0.2), rgba(240, 110, 95, 0.08));
+        border-radius: var(--radius-md);
+        padding: 1.4rem;
+        border: 1px solid rgba(27, 31, 59, 0.08);
+      }
+
+      .result-badge {
+        display: inline-block;
+        background: rgba(27, 31, 59, 0.12);
+        color: var(--ink);
+        padding: 0.25rem 0.7rem;
+        border-radius: 999px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        margin-bottom: 0.6rem;
+      }
+
+      .result-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1rem;
+      }
+
+      .result-card {
+        border: 1px solid rgba(27, 31, 59, 0.12);
+        border-radius: var(--radius-md);
+        padding: 1.2rem;
+        background: var(--white);
+      }
+
+      .result-card.primary {
+        border-color: rgba(240, 110, 95, 0.35);
+        box-shadow: 0 10px 24px rgba(240, 110, 95, 0.15);
+      }
+
+      .result-percent {
+        font-size: 1.6rem;
+        font-weight: 700;
+        margin-bottom: 0.4rem;
+      }
+
+      .sparkle {
+        position: absolute;
+        top: -10px;
+        right: 18px;
+        display: flex;
+        gap: 6px;
+        pointer-events: none;
+      }
+
+      .sparkle span {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--sun);
+        opacity: 0;
+        transform: translateY(8px) scale(0.6);
+      }
+
+      .quiz-results.celebrate .sparkle span {
+        animation: sparkle 1s ease-out forwards;
+      }
+
+      .quiz-results.celebrate .sparkle span:nth-child(2) {
+        animation-delay: 0.1s;
+      }
+
+      .quiz-results.celebrate .sparkle span:nth-child(3) {
+        animation-delay: 0.2s;
+      }
+
+      .quiz-results.celebrate .sparkle span:nth-child(4) {
+        animation-delay: 0.3s;
+      }
+
+      .quiz-results.celebrate .sparkle span:nth-child(5) {
+        animation-delay: 0.4s;
+      }
+
+      @keyframes sparkle {
+        0% {
+          opacity: 0;
+          transform: translateY(8px) scale(0.6);
+        }
+        50% {
+          opacity: 1;
+          transform: translateY(-4px) scale(1);
+        }
+        100% {
+          opacity: 0;
+          transform: translateY(-12px) scale(0.6);
+        }
+      }
+
+      .hidden {
+        display: none;
+      }
+
       .vsl-grid {
         display: grid;
         grid-template-columns: minmax(280px, 1.35fr) minmax(240px, 1fr);
@@ -675,13 +899,63 @@
             Your results include your Freeze Signature Type, Freeze % score, and a personalized Thaw Mini-Guide so you
             can feel steadier right away.
           </p>
-          <div class="quiz-embed">
-            <h3>Quiz Embed Placeholder</h3>
-            <p>Add your quiz embed code or iframe here when ready.</p>
-            <button class="btn" type="button">Start the 5-question quiz for calm + clarity</button>
-            <p style="margin-top: 0.9rem; color: var(--ink-soft)">
-              Your answers are confidential. This is a judgment-free sanctuary for healing.
-            </p>
+          <div class="quiz-card" id="quiz-app">
+            <div class="quiz-progress" id="quiz-progress">
+              <div class="quiz-step" id="quiz-step">Question 1 of 5</div>
+              <div class="quiz-bar">
+                <div class="quiz-bar-fill" id="quiz-bar-fill"></div>
+              </div>
+            </div>
+            <div class="quiz-body" id="quiz-body">
+              <h3 class="quiz-question" id="quiz-question"></h3>
+              <div class="quiz-options" id="quiz-options"></div>
+              <button class="quiz-skip" id="quiz-skip" type="button">None of these resonate</button>
+              <div class="quiz-nav">
+                <button class="btn secondary" id="quiz-back" type="button">Back</button>
+                <p class="form-helper">Choose the option that fits best right now.</p>
+              </div>
+            </div>
+            <form class="quiz-form hidden" id="quiz-form">
+              <h3>Where should we send your results?</h3>
+              <div class="form-grid">
+                <div class="form-field">
+                  <label for="quiz-name">Full name *</label>
+                  <input id="quiz-name" name="name" type="text" required autocomplete="name" />
+                </div>
+                <div class="form-field">
+                  <label for="quiz-email">Email *</label>
+                  <input id="quiz-email" name="email" type="email" required autocomplete="email" />
+                </div>
+                <div class="form-field">
+                  <label for="quiz-phone">Phone (optional)</label>
+                  <input id="quiz-phone" name="phone" type="tel" autocomplete="tel" />
+                </div>
+              </div>
+              <p class="form-helper">
+                We only use your info to deliver your results and support your next steps.
+              </p>
+              <div class="quiz-nav">
+                <button class="btn secondary" id="quiz-form-back" type="button">Back</button>
+                <button class="btn" type="submit">See my results</button>
+              </div>
+            </form>
+            <div class="quiz-results hidden" id="quiz-results">
+              <h3>Your Freeze Signature Results</h3>
+              <p class="lead">Thank you for taking the time to complete this quiz.</p>
+              <div class="result-primary" id="result-primary">
+                <div class="result-badge">Primary Freeze Signature</div>
+                <h3 id="primary-name"></h3>
+                <p id="primary-desc"></p>
+                <div class="sparkle" aria-hidden="true">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+              </div>
+              <div class="result-grid" id="result-grid"></div>
+            </div>
           </div>
         </div>
       </section>
@@ -763,6 +1037,270 @@
         </div>
       </section>
     </main>
+
+    <script>
+      const quizCategories = [
+        {
+          name: "Vigilant Mind - Frozen Body",
+          description:
+            "Your system stays alert to keep you safe. Early thaw often looks like grounding, slower pace, and feeling support in your body.",
+        },
+        {
+          name: "Collapsed Core",
+          description:
+            "Your energy dips to conserve. Early thaw looks like gentle structure, nourishment, and confidence returning.",
+        },
+        {
+          name: "Guarded Heart",
+          description:
+            "Closeness feels risky, so your heart stays protected. Thaw happens with safety, pacing, and permission to feel.",
+        },
+        {
+          name: "Grief-Bound Protector",
+          description:
+            "Grief is held in the chest and shoulders. Thaw comes through breath, softening, and emotional release.",
+        },
+        {
+          name: "Quietly Agitated Warrior",
+          description:
+            "Frustration turns inward and feels restless. Thaw comes through safe movement, expression, and flow.",
+        },
+      ];
+
+      const quizQuestions = [
+        {
+          prompt: "Which statement feels most true?",
+          options: [
+            "I need to anticipate danger to stay safe.",
+            "I never seem to have enough energy.",
+            "I protect my heart because closeness feels risky.",
+            "I carry grief or sadness I cannot fully express.",
+            "I bottle up frustration until it explodes or implodes.",
+          ],
+          skipLabel: "None of these resonate",
+        },
+        {
+          prompt: "What happens in your relationships?",
+          options: [
+            "I get stuck in my head and worry about what people think.",
+            "I shut down and lack the energy to stay engaged.",
+            "I keep emotional walls up to avoid disappointment.",
+            "I feel unseen or weighed down.",
+            "I feel resentment or irritation but do not express it.",
+          ],
+          skipLabel: "None of these resonate",
+        },
+        {
+          prompt: "When you try to relax, what stops you?",
+          options: [
+            "My mind will not slow down.",
+            "Relaxation feels like collapsing even more.",
+            "I cannot let my guard down.",
+            "Sadness surfaces immediately.",
+            "I feel restless or agitated inside.",
+          ],
+          skipLabel: "I can relax when I decide to / None of the above",
+        },
+        {
+          prompt: "What best describes your childhood pattern?",
+          options: [
+            "Hyper-alert, careful, managing danger.",
+            "Not seen, not supported, had to shrink.",
+            "Had to be emotionally mature or controlled.",
+            "Experienced loss or emotional distance.",
+            "Learned not to express anger.",
+          ],
+          skipLabel: "I do not recall any of these prominently",
+        },
+        {
+          prompt: "What kind of help feels most supportive right now?",
+          options: [
+            "Tools to calm my mind and feel safe in my body.",
+            "Gentle energy-building and confidence restoration.",
+            "Practices for opening my heart safely.",
+            "Support for releasing grief and softening tension.",
+            "Techniques for releasing internal pressure.",
+          ],
+          skipLabel: "I am not really feeling any of these right now",
+        },
+      ];
+
+      const quizElements = {
+        app: document.getElementById("quiz-app"),
+        progress: document.getElementById("quiz-progress"),
+        step: document.getElementById("quiz-step"),
+        barFill: document.getElementById("quiz-bar-fill"),
+        body: document.getElementById("quiz-body"),
+        question: document.getElementById("quiz-question"),
+        options: document.getElementById("quiz-options"),
+        skip: document.getElementById("quiz-skip"),
+        back: document.getElementById("quiz-back"),
+        form: document.getElementById("quiz-form"),
+        formBack: document.getElementById("quiz-form-back"),
+        results: document.getElementById("quiz-results"),
+        primaryName: document.getElementById("primary-name"),
+        primaryDesc: document.getElementById("primary-desc"),
+        resultGrid: document.getElementById("result-grid"),
+      };
+
+      if (quizElements.app) {
+        let currentIndex = 0;
+        const responses = Array(quizQuestions.length).fill(null);
+
+        const updateProgress = (labelOverride) => {
+          if (quizElements.step) {
+            quizElements.step.textContent =
+              labelOverride || `Question ${currentIndex + 1} of ${quizQuestions.length}`;
+          }
+          if (quizElements.barFill) {
+            const percent = Math.round(((currentIndex + 1) / quizQuestions.length) * 100);
+            quizElements.barFill.style.width = `${percent}%`;
+          }
+        };
+
+        const renderQuestion = () => {
+          const currentQuestion = quizQuestions[currentIndex];
+          quizElements.question.textContent = currentQuestion.prompt;
+          quizElements.options.innerHTML = "";
+
+          currentQuestion.options.forEach((option, index) => {
+            const button = document.createElement("button");
+            button.type = "button";
+            button.className = "quiz-option";
+            button.textContent = option;
+            if (responses[currentIndex] === index) {
+              button.classList.add("selected");
+            }
+            button.addEventListener("click", () => {
+              responses[currentIndex] = index;
+              button.classList.add("selected");
+              setTimeout(() => {
+                goNext();
+              }, 120);
+            });
+            quizElements.options.appendChild(button);
+          });
+
+          quizElements.skip.textContent = currentQuestion.skipLabel || "None of these resonate";
+          quizElements.back.style.visibility = currentIndex === 0 ? "hidden" : "visible";
+          updateProgress();
+        };
+
+        const goNext = () => {
+          if (currentIndex < quizQuestions.length - 1) {
+            currentIndex += 1;
+            renderQuestion();
+          } else {
+            showForm();
+          }
+        };
+
+        const showForm = () => {
+          quizElements.body.classList.add("hidden");
+          quizElements.form.classList.remove("hidden");
+          quizElements.results.classList.add("hidden");
+          quizElements.progress.classList.remove("hidden");
+          updateProgress("Final step");
+          quizElements.barFill.style.width = "100%";
+        };
+
+        const showResults = () => {
+          quizElements.form.classList.add("hidden");
+          quizElements.results.classList.remove("hidden");
+          quizElements.progress.classList.add("hidden");
+          quizElements.results.classList.remove("celebrate");
+          setTimeout(() => {
+            quizElements.results.classList.add("celebrate");
+          }, 80);
+        };
+
+        const calculateResults = () => {
+          const totals = quizCategories.map(() => 0);
+          let answered = 0;
+          responses.forEach((value) => {
+            if (value !== null) {
+              totals[value] += 1;
+              answered += 1;
+            }
+          });
+          const percents = totals.map((count) =>
+            answered === 0 ? 0 : Math.round((count / answered) * 100)
+          );
+          let primaryIndex = 0;
+          percents.forEach((percent, index) => {
+            if (percent > percents[primaryIndex]) {
+              primaryIndex = index;
+            }
+          });
+          return { totals, percents, primaryIndex, answered };
+        };
+
+        const renderResults = () => {
+          const { percents, primaryIndex, answered } = calculateResults();
+          const primary = quizCategories[primaryIndex];
+          quizElements.primaryName.textContent = `${primary.name} (${percents[primaryIndex]}%)`;
+          quizElements.primaryDesc.textContent =
+            answered === 0
+              ? "No dominant pattern selected yet. You can retake the quiz and choose the closest fit."
+              : primary.description;
+
+          quizElements.resultGrid.innerHTML = "";
+          quizCategories.forEach((category, index) => {
+            const card = document.createElement("div");
+            card.className = "result-card";
+            if (index === primaryIndex && answered > 0) {
+              card.classList.add("primary");
+            }
+
+            const percent = document.createElement("div");
+            percent.className = "result-percent";
+            percent.textContent = `${percents[index]}%`;
+
+            const title = document.createElement("h4");
+            title.textContent = category.name;
+
+            const desc = document.createElement("p");
+            desc.textContent = category.description;
+
+            card.appendChild(percent);
+            card.appendChild(title);
+            card.appendChild(desc);
+            quizElements.resultGrid.appendChild(card);
+          });
+        };
+
+        quizElements.skip.addEventListener("click", () => {
+          responses[currentIndex] = null;
+          goNext();
+        });
+
+        quizElements.back.addEventListener("click", () => {
+          if (currentIndex > 0) {
+            currentIndex -= 1;
+            renderQuestion();
+          }
+        });
+
+        quizElements.formBack.addEventListener("click", () => {
+          quizElements.form.classList.add("hidden");
+          quizElements.body.classList.remove("hidden");
+          quizElements.progress.classList.remove("hidden");
+          currentIndex = quizQuestions.length - 1;
+          renderQuestion();
+        });
+
+        quizElements.form.addEventListener("submit", (event) => {
+          event.preventDefault();
+          if (!quizElements.form.reportValidity()) {
+            return;
+          }
+          renderResults();
+          showResults();
+        });
+
+        renderQuestion();
+      }
+    </script>
 
     <footer>
       <div class="container">
