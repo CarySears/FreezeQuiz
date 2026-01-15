@@ -334,8 +334,8 @@
       }
 
       .sparkle span {
-        width: 6px;
-        height: 6px;
+        width: 8px;
+        height: 8px;
         border-radius: 50%;
         background: var(--sun);
         opacity: 0;
@@ -344,6 +344,10 @@
 
       .quiz-results.celebrate .sparkle span {
         animation: sparkle 1s ease-out forwards;
+      }
+
+      .quiz-results.celebrate .result-primary {
+        animation: resultPop 0.6s ease-out;
       }
 
       .quiz-results.celebrate .sparkle span:nth-child(2) {
@@ -374,6 +378,18 @@
         100% {
           opacity: 0;
           transform: translateY(-12px) scale(0.6);
+        }
+      }
+
+      @keyframes resultPop {
+        0% {
+          transform: scale(0.98);
+        }
+        60% {
+          transform: scale(1.02);
+        }
+        100% {
+          transform: scale(1);
         }
       }
 
@@ -484,10 +500,8 @@
                   </div>
                 </div>
                 <div class="quiz-nav">
-                  <a class="btn" id="offer-cta" href="checkout-vigilant-mind.html">Continue to checkout</a>
-                  <p class="form-helper">
-                    Prominent Freeze Signature Course $27. Bundle all five for $75 (value $135).
-                  </p>
+                  <a class="btn" id="offer-cta" href="checkout-vigilant-mind.html">Unlock my Thaw Plan</a>
+                  <p class="form-helper">Your next step is ready whenever you are.</p>
                 </div>
               </div>
             </div>
@@ -529,92 +543,97 @@
         {
           title: "Your next step: The Vigilant Mind - Frozen Body Course",
           copy:
-            "Your system learned to stay safe by scanning for danger. This course helps you land in your body, build predictability, and end the vigilance loop without losing your edge.",
+            "Start with the quick relief below today. But if you stay in scan mode, your body keeps paying the price in tension, fatigue, and decision fog. This course is the fastest path to predictable calm without losing your edge.",
           guide: [
-            "Anchor awareness down into your belly, hips, and feet.",
-            "Name one predictable thing three times today.",
-            "Use slow, warm exhales to signal safety.",
-            "Hand on lower belly and heart, breathe until you feel grounded.",
+            "Drop awareness into belly, hips, and feet so the scan can soften.",
+            "Name one predictable thing three times to prove safety is real now.",
+            "Use slow, warm exhales to tell your body it can land.",
+            "Hand on lower belly and heart until your system settles.",
           ],
           needs: [
-            "Gentle grounding you can trust.",
-            "Slow, predictable breath practices.",
-            "Safety signals for your body, not just your mind.",
-            "Micro-moments of stillness, not marathons.",
+            "Grounding you can trust when your mind races.",
+            "Predictable breath rituals that end the vigilance loop.",
+            "Body-first safety signals so you do not have to think your way out.",
+            "Micro-pauses that keep you sharp without burning out.",
           ],
           checkout: "checkout-vigilant-mind.html",
+          ctaLabel: "Unlock my Vigilant Mind Thaw Course",
         },
         {
           title: "Your next step: The Collapsed Core Course",
           copy:
-            "Your system protects you by shutting down. This course rebuilds energy and confidence with gentle structure, tiny wins, and a soft return to your center.",
+            "These tiny shifts can lift you today, but collapse returns without a clear path. This course rebuilds energy and confidence with a gentle, repeatable structure that finally holds.",
           guide: [
-            "Stand or sit 2% taller for one minute.",
-            "Let the belly soften on the inhale.",
-            "Visualize a glow one inch beyond your skin.",
-            "Imagine your ribs widening like small wings.",
+            "Stand or sit 2% taller to signal safety and strength.",
+            "Let the belly soften so your center can wake up.",
+            "Visualize a glow one inch beyond your skin to reclaim space.",
+            "Imagine ribs widening like small wings to re-open breath.",
           ],
           needs: [
-            "Gentle energy-building practices.",
-            "Belly breath and grounding routines.",
-            "Mini-movements that re-inflate your power center.",
-            "Support without pressure or push.",
+            "Energy practices that feel kind, not demanding.",
+            "Belly breath routines that rebuild your center daily.",
+            "Mini-movements that re-inflate your power without overwhelm.",
+            "Support that keeps momentum when life gets heavy.",
           ],
           checkout: "checkout-collapsed-core.html",
+          ctaLabel: "Rebuild my Collapsed Core Now",
         },
         {
           title: "Your next step: The Guarded Heart Course",
           copy:
-            "Your heart wants connection, but your system braces. This course helps you reopen safely, receive without overwhelm, and trust your own heart again.",
+            "You can feel a soft shift with the steps below. But staying guarded keeps the connection you want just out of reach. This course gives you a safe, step-by-step way to open without overwhelm.",
           guide: [
-            "Hand on heart, hand on belly, breathe gently.",
-            "Name the faintest emotion you can feel.",
+            "Hand on heart, hand on belly, breathe gently to invite safety.",
+            "Name the faintest emotion so the heart can thaw 1% at a time.",
             "Warmth before intensity, wrap a blanket around your shoulders.",
-            "Imagine a soft light warming the edges of numbness.",
+            "Picture a soft light warming the edges of numbness.",
           ],
           needs: [
-            "Practices that build heart safety.",
+            "Heart safety before openness.",
             "Somatic unwinding around the sternum and shoulders.",
             "Tools for receiving without bracing.",
-            "A gentle pathway to relational thawing.",
+            "A gentle path to relational thawing that feels safe.",
           ],
           checkout: "checkout-guarded-heart.html",
+          ctaLabel: "Open My Heart Safely",
         },
         {
           title: "Your next step: The Grief-Bound Protector Course",
           copy:
-            "Your system holds grief by tightening the upper body. This course softens the grief shield and restores breath, openness, and emotional release.",
+            "The steps below can loosen the grip today. But if the shield stays tight, grief stays stuck and breath stays shallow. This course guides a safe, steady release without flooding.",
           guide: [
-            "Drop your shoulders on the exhale.",
-            "Name one small strand of sadness.",
-            "Breathe into the back of the heart.",
+            "Drop the shoulders on the exhale to soften the shield.",
+            "Name one small strand of sadness so it can move.",
+            "Breathe into the back of the heart to open gently.",
             "Visualize a soft white mist clearing heaviness.",
           ],
           needs: [
-            "Gentle emotional thawing.",
-            "Breathwork that softens without force.",
-            "Upper-back and chest release.",
-            "A slow, steady restoration of openness.",
+            "Gentle emotional thawing with steady pacing.",
+            "Breathwork that softens instead of forces.",
+            "Upper-back and chest release that feels safe.",
+            "A slow, stable return to openness and ease.",
           ],
           checkout: "checkout-grief-bound-protector.html",
+          ctaLabel: "Release My Grief Shield",
         },
         {
           title: "Your next step: The Quietly Agitated Warrior Course",
           copy:
-            "Your freeze shows up as pressure and held anger. This course helps you release trapped fire into clarity, movement, and healthy boundaries.",
+            "Try the relief steps below today. But if pressure keeps building, it will spill out as burnout or shutdown. This course channels your power into clarity, movement, and healthy boundaries.",
           guide: [
-            "Soften the right ribs and exhale into your flanks.",
-            "Acknowledge anger safely without acting it out.",
-            "Unclench the jaw, shoulders, and eyes on the exhale.",
-            "Practice one micro-boundary today.",
+            "Soften the right ribs and exhale into the flanks.",
+            "Acknowledge anger safely so it stops living in your body.",
+            "Unclench jaw, shoulders, and eyes on the exhale.",
+            "Practice one micro-boundary so your power feels safe.",
           ],
           needs: [
-            "Safe pathways for expression.",
-            "Movement that releases internal pressure.",
-            "Breathwork that unclenches the diaphragm.",
-            "Tools that restore healthy boundaries.",
+            "Safe pathways for expression without fallout.",
+            "Movement that releases internal pressure quickly.",
+            "Breathwork that unclenches the diaphragm and ribs.",
+            "Tools that restore healthy boundaries and direction.",
           ],
           checkout: "checkout-quietly-agitated-warrior.html",
+          ctaLabel: "Activate My Warrior Thaw Plan",
         },
       ];
 
@@ -850,7 +869,7 @@
             li.textContent = item;
             quizElements.offerNeeds.appendChild(li);
           });
-          quizElements.offerCta.textContent = "Continue to checkout";
+          quizElements.offerCta.textContent = offer.ctaLabel;
           quizElements.offerCta.href = offer.checkout;
         };
 
