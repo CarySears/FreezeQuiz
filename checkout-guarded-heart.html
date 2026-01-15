@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Guarded Heart Course | The Thaw Method</title>
+    <meta
+      name="description"
+      content="Enroll in the Guarded Heart course to soften protection and reconnect with safe intimacy through a trauma-informed path."
+    />
+    <style>
+      :root {
+        --ink: #1b1f3b;
+        --ink-soft: #313861;
+        --mist: #f4f1ed;
+        --sand: #f2dcc7;
+        --coral: #f06e5f;
+        --teal: #69c6c0;
+        --lavender: #c7c2f3;
+        --sun: #ffd48f;
+        --white: #ffffff;
+        --shadow: 0 18px 45px rgba(27, 31, 59, 0.16);
+        --radius-lg: 28px;
+        --radius-md: 18px;
+        --radius-sm: 12px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+        color: var(--ink);
+        background: linear-gradient(180deg, #fff 0%, #f8f4f0 100%);
+        line-height: 1.6;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .container {
+        width: min(1080px, 92vw);
+        margin: 0 auto;
+      }
+
+      .nav {
+        padding: 1.4rem 0;
+      }
+
+      .nav-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+
+      .brand {
+        font-weight: 700;
+        letter-spacing: 0.4px;
+      }
+
+      .brand span {
+        display: block;
+        font-weight: 500;
+        font-size: 0.85rem;
+        color: var(--ink-soft);
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
+
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: rgba(105, 198, 192, 0.18);
+        color: var(--ink);
+        padding: 0.35rem 0.9rem;
+        border-radius: 999px;
+        font-size: 0.9rem;
+        font-weight: 600;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.85rem 1.6rem;
+        border-radius: 999px;
+        font-weight: 700;
+        background: var(--coral);
+        color: var(--white);
+        box-shadow: var(--shadow);
+        border: none;
+        cursor: pointer;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 22px 50px rgba(27, 31, 59, 0.2);
+      }
+
+      .btn.secondary {
+        background: transparent;
+        color: var(--ink);
+        border: 1px solid rgba(27, 31, 59, 0.2);
+        box-shadow: none;
+      }
+
+      .hero {
+        padding: 2.6rem 0 1.5rem;
+      }
+
+      .hero h1 {
+        font-size: clamp(2.2rem, 3vw, 3rem);
+        margin: 1rem 0 0.8rem;
+      }
+
+      .lead {
+        max-width: 720px;
+        color: var(--ink-soft);
+      }
+
+      .section {
+        padding: 2rem 0 4rem;
+      }
+
+      .offer-grid {
+        display: grid;
+        grid-template-columns: minmax(320px, 1.25fr) minmax(280px, 1fr);
+        gap: 2rem;
+        align-items: start;
+      }
+
+      .card {
+        background: var(--white);
+        border-radius: var(--radius-lg);
+        padding: 2rem;
+        box-shadow: var(--shadow);
+      }
+
+      .card h2,
+      .card h3 {
+        margin-top: 0;
+      }
+
+      .list {
+        margin: 0.8rem 0 0;
+        padding-left: 1.1rem;
+        color: var(--ink-soft);
+      }
+
+      .list li {
+        margin-bottom: 0.5rem;
+      }
+
+      .price-box {
+        border-radius: var(--radius-md);
+        background: rgba(105, 198, 192, 0.12);
+        padding: 1.5rem;
+        margin-bottom: 1.4rem;
+      }
+
+      .price-label {
+        font-weight: 600;
+        margin: 0 0 0.4rem;
+      }
+
+      .price {
+        font-size: 2rem;
+        font-weight: 700;
+        margin: 0 0 0.4rem;
+      }
+
+      .price-sub {
+        margin: 0;
+        color: var(--ink-soft);
+      }
+
+      .form-grid {
+        display: grid;
+        gap: 1rem;
+      }
+
+      .form-field label {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 0.4rem;
+      }
+
+      .form-field input {
+        width: 100%;
+        padding: 0.7rem 0.85rem;
+        border-radius: var(--radius-sm);
+        border: 1px solid rgba(27, 31, 59, 0.2);
+        font-size: 1rem;
+        font-family: inherit;
+      }
+
+      .order-bump {
+        border: 1px solid rgba(27, 31, 59, 0.12);
+        border-radius: var(--radius-md);
+        padding: 1rem;
+        background: rgba(199, 194, 243, 0.2);
+        margin: 1.2rem 0;
+      }
+
+      .order-bump label {
+        display: flex;
+        gap: 0.6rem;
+        font-weight: 600;
+        color: var(--ink);
+      }
+
+      .total-line {
+        display: flex;
+        justify-content: space-between;
+        font-weight: 700;
+        margin: 1rem 0 1.4rem;
+      }
+
+      .form-helper {
+        color: var(--ink-soft);
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 860px) {
+        .offer-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .nav-inner {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="nav">
+      <div class="container nav-inner">
+        <div class="brand">
+          Healing Cosmos Presents
+          <span>The Thaw Method (TM)</span>
+        </div>
+        <a class="btn secondary" href="quiz.html">Back to quiz results</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container">
+          <span class="pill">Prominent Freeze Signature Course</span>
+          <h1>The Guarded Heart</h1>
+          <p class="lead">
+            Soften protection, receive safely, and restore trust in your own heart.
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container offer-grid">
+          <div class="card">
+            <h2>Why your system uses this pattern</h2>
+            <p>
+              Your heart wants connection, but your freeze pattern makes closeness feel unsafe. This course helps you
+              rebuild heart safety and open gently, without pressure or overwhelm.
+            </p>
+
+            <h3>Thaw Mini-Guide</h3>
+            <ul class="list">
+              <li>Hand on heart, hand on belly, breathe gently.</li>
+              <li>Name the faintest emotion you can feel.</li>
+              <li>Warmth before intensity, wrap a blanket around your shoulders.</li>
+              <li>Imagine a soft light warming the edges of numbness.</li>
+            </ul>
+
+            <h3>Your Freeze Signature</h3>
+            <p>Somatic clues:</p>
+            <ul class="list">
+              <li>Tight chest or braced shoulders.</li>
+              <li>Difficulty receiving care or compliments.</li>
+              <li>Fear of disappointment or emotional overwhelm.</li>
+              <li>Feeling like you must hold everything together.</li>
+            </ul>
+
+            <h3>Organ Qi pattern: Heart Qi stagnation</h3>
+            <p>
+              Heart Qi is linked to joy, warmth, and intimacy. When it is blocked, yearning and fear rise together, and
+              the heart guards itself through control and emotional vigilance.
+            </p>
+
+            <h3>Your psychological story</h3>
+            <p>
+              You learned to manage emotions, yours or someone else's, to stay safe. The result is an approach-avoid
+              loop: longing, bracing, withdrawing, longing again.
+            </p>
+
+            <h3>What you need right now</h3>
+            <ul class="list">
+              <li>Practices that build heart safety and trust.</li>
+              <li>Somatic unwinding around the sternum and shoulders.</li>
+              <li>Rituals that restore emotional sovereignty.</li>
+              <li>Tools for receiving without bracing.</li>
+            </ul>
+
+            <h3>Inside your personalized mini eBook</h3>
+            <ul class="list">
+              <li>The guarded heart freeze cycle.</li>
+              <li>Heart Qi and desire loops explained.</li>
+              <li>Why you brace during receiving.</li>
+              <li>Gentle heart-opening practices.</li>
+            </ul>
+
+            <h3>Inside your 7-day micro-course</h3>
+            <ul class="list">
+              <li>Guided somatic practice: Softening the Armor.</li>
+              <li>Qigong for Heart Qi circulation.</li>
+              <li>A daily receiving practice.</li>
+              <li>Breathwork for relational safety.</li>
+              <li>A micro-practice to dismantle emotional hyper-control.</li>
+            </ul>
+
+            <h3>Your next step</h3>
+            <p>
+              The full Thaw Method course helps you rewire relational safety, open your heart without losing boundaries,
+              and receive without bracing.
+            </p>
+          </div>
+
+          <aside class="card">
+            <h2>Checkout</h2>
+            <div class="price-box">
+              <p class="price-label">Prominent Freeze Signature Course</p>
+              <p class="price">$27</p>
+              <p class="price-sub">Immediate access to the mini eBook + 7-day micro-course.</p>
+            </div>
+
+            <div class="form-grid">
+              <div class="form-field">
+                <label for="checkout-name">Full name *</label>
+                <input id="checkout-name" name="name" type="text" required autocomplete="name" />
+              </div>
+              <div class="form-field">
+                <label for="checkout-email">Email *</label>
+                <input id="checkout-email" name="email" type="email" required autocomplete="email" />
+              </div>
+            </div>
+
+            <div class="order-bump">
+              <label for="bundle-bump">
+                <input id="bundle-bump" type="checkbox" />
+                Yes, upgrade to all 5 courses for $75 total (save $60 off $135 value). Best for holistic healing and
+                integration.
+              </label>
+            </div>
+
+            <div class="total-line">
+              <span id="total-label">Course total</span>
+              <span id="order-total">$27</span>
+            </div>
+
+            <button class="btn" type="button">Complete my order</button>
+            <p class="form-helper">Secure checkout placeholder. Trauma-informed and easy to follow.</p>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const bump = document.getElementById("bundle-bump");
+      const total = document.getElementById("order-total");
+      const totalLabel = document.getElementById("total-label");
+      const basePrice = 27;
+      const bundlePrice = 75;
+
+      const updateTotal = () => {
+        const price = bump.checked ? bundlePrice : basePrice;
+        total.textContent = `$${price}`;
+        totalLabel.textContent = bump.checked ? "Bundle total" : "Course total";
+      };
+
+      bump.addEventListener("change", updateTotal);
+      updateTotal();
+    </script>
+  </body>
+</html>

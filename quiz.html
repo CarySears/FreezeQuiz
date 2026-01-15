@@ -125,6 +125,16 @@
         color: var(--ink-soft);
       }
 
+      .list {
+        margin: 0.8rem 0 0;
+        padding-left: 1.1rem;
+        color: var(--ink-soft);
+      }
+
+      .list li {
+        margin-bottom: 0.5rem;
+      }
+
       .section {
         padding: 2rem 0 4rem;
       }
@@ -295,6 +305,25 @@
         margin-bottom: 0.4rem;
       }
 
+      .result-cta {
+        margin-top: 1.6rem;
+        border-top: 1px solid rgba(27, 31, 59, 0.1);
+        padding-top: 1.6rem;
+        display: grid;
+        gap: 1rem;
+      }
+
+      .result-columns {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1rem;
+      }
+
+      .price-note {
+        font-weight: 600;
+        color: var(--ink);
+      }
+
       .sparkle {
         position: absolute;
         top: -10px;
@@ -441,6 +470,26 @@
                 </div>
               </div>
               <div class="result-grid" id="result-grid"></div>
+              <div class="result-cta" id="result-cta">
+                <h3 id="offer-title"></h3>
+                <p id="offer-copy"></p>
+                <div class="result-columns">
+                  <div>
+                    <h4>Thaw Mini-Guide</h4>
+                    <ul class="list" id="offer-guide"></ul>
+                  </div>
+                  <div>
+                    <h4>What you need right now</h4>
+                    <ul class="list" id="offer-needs"></ul>
+                  </div>
+                </div>
+                <div class="quiz-nav">
+                  <a class="btn" id="offer-cta" href="checkout-vigilant-mind.html">Continue to checkout</a>
+                  <p class="form-helper">
+                    Prominent Freeze Signature Course $27. Bundle all five for $75 (value $135).
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -473,6 +522,99 @@
           name: "Quietly Agitated Warrior",
           description:
             "Frustration turns inward and feels restless. Thaw comes through safe movement, expression, and flow.",
+        },
+      ];
+
+      const courseOffers = [
+        {
+          title: "Your next step: The Vigilant Mind - Frozen Body Course",
+          copy:
+            "Your system learned to stay safe by scanning for danger. This course helps you land in your body, build predictability, and end the vigilance loop without losing your edge.",
+          guide: [
+            "Anchor awareness down into your belly, hips, and feet.",
+            "Name one predictable thing three times today.",
+            "Use slow, warm exhales to signal safety.",
+            "Hand on lower belly and heart, breathe until you feel grounded.",
+          ],
+          needs: [
+            "Gentle grounding you can trust.",
+            "Slow, predictable breath practices.",
+            "Safety signals for your body, not just your mind.",
+            "Micro-moments of stillness, not marathons.",
+          ],
+          checkout: "checkout-vigilant-mind.html",
+        },
+        {
+          title: "Your next step: The Collapsed Core Course",
+          copy:
+            "Your system protects you by shutting down. This course rebuilds energy and confidence with gentle structure, tiny wins, and a soft return to your center.",
+          guide: [
+            "Stand or sit 2% taller for one minute.",
+            "Let the belly soften on the inhale.",
+            "Visualize a glow one inch beyond your skin.",
+            "Imagine your ribs widening like small wings.",
+          ],
+          needs: [
+            "Gentle energy-building practices.",
+            "Belly breath and grounding routines.",
+            "Mini-movements that re-inflate your power center.",
+            "Support without pressure or push.",
+          ],
+          checkout: "checkout-collapsed-core.html",
+        },
+        {
+          title: "Your next step: The Guarded Heart Course",
+          copy:
+            "Your heart wants connection, but your system braces. This course helps you reopen safely, receive without overwhelm, and trust your own heart again.",
+          guide: [
+            "Hand on heart, hand on belly, breathe gently.",
+            "Name the faintest emotion you can feel.",
+            "Warmth before intensity, wrap a blanket around your shoulders.",
+            "Imagine a soft light warming the edges of numbness.",
+          ],
+          needs: [
+            "Practices that build heart safety.",
+            "Somatic unwinding around the sternum and shoulders.",
+            "Tools for receiving without bracing.",
+            "A gentle pathway to relational thawing.",
+          ],
+          checkout: "checkout-guarded-heart.html",
+        },
+        {
+          title: "Your next step: The Grief-Bound Protector Course",
+          copy:
+            "Your system holds grief by tightening the upper body. This course softens the grief shield and restores breath, openness, and emotional release.",
+          guide: [
+            "Drop your shoulders on the exhale.",
+            "Name one small strand of sadness.",
+            "Breathe into the back of the heart.",
+            "Visualize a soft white mist clearing heaviness.",
+          ],
+          needs: [
+            "Gentle emotional thawing.",
+            "Breathwork that softens without force.",
+            "Upper-back and chest release.",
+            "A slow, steady restoration of openness.",
+          ],
+          checkout: "checkout-grief-bound-protector.html",
+        },
+        {
+          title: "Your next step: The Quietly Agitated Warrior Course",
+          copy:
+            "Your freeze shows up as pressure and held anger. This course helps you release trapped fire into clarity, movement, and healthy boundaries.",
+          guide: [
+            "Soften the right ribs and exhale into your flanks.",
+            "Acknowledge anger safely without acting it out.",
+            "Unclench the jaw, shoulders, and eyes on the exhale.",
+            "Practice one micro-boundary today.",
+          ],
+          needs: [
+            "Safe pathways for expression.",
+            "Movement that releases internal pressure.",
+            "Breathwork that unclenches the diaphragm.",
+            "Tools that restore healthy boundaries.",
+          ],
+          checkout: "checkout-quietly-agitated-warrior.html",
         },
       ];
 
@@ -550,6 +692,11 @@
         primaryName: document.getElementById("primary-name"),
         primaryDesc: document.getElementById("primary-desc"),
         resultGrid: document.getElementById("result-grid"),
+        offerTitle: document.getElementById("offer-title"),
+        offerCopy: document.getElementById("offer-copy"),
+        offerGuide: document.getElementById("offer-guide"),
+        offerNeeds: document.getElementById("offer-needs"),
+        offerCta: document.getElementById("offer-cta"),
       };
 
       if (quizElements.app) {
@@ -676,6 +823,35 @@
             card.appendChild(desc);
             quizElements.resultGrid.appendChild(card);
           });
+
+          if (answered === 0) {
+            quizElements.offerTitle.textContent = "Not sure yet?";
+            quizElements.offerCopy.textContent =
+              "Retake the quiz and choose the closest match so we can guide you to the right course.";
+            quizElements.offerGuide.innerHTML = "";
+            quizElements.offerNeeds.innerHTML = "";
+            quizElements.offerCta.textContent = "Retake the quiz";
+            quizElements.offerCta.href = "quiz.html";
+            return;
+          }
+
+          const offer = courseOffers[primaryIndex];
+          quizElements.offerTitle.textContent = offer.title;
+          quizElements.offerCopy.textContent = offer.copy;
+          quizElements.offerGuide.innerHTML = "";
+          offer.guide.forEach((item) => {
+            const li = document.createElement("li");
+            li.textContent = item;
+            quizElements.offerGuide.appendChild(li);
+          });
+          quizElements.offerNeeds.innerHTML = "";
+          offer.needs.forEach((item) => {
+            const li = document.createElement("li");
+            li.textContent = item;
+            quizElements.offerNeeds.appendChild(li);
+          });
+          quizElements.offerCta.textContent = "Continue to checkout";
+          quizElements.offerCta.href = offer.checkout;
         };
 
         quizElements.skip.addEventListener("click", () => {

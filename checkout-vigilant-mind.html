@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Vigilant Mind - Frozen Body Course | The Thaw Method</title>
+    <meta
+      name="description"
+      content="Enroll in the Vigilant Mind - Frozen Body course and begin thawing vigilance with a calm, trauma-informed pathway."
+    />
+    <style>
+      :root {
+        --ink: #1b1f3b;
+        --ink-soft: #313861;
+        --mist: #f4f1ed;
+        --sand: #f2dcc7;
+        --coral: #f06e5f;
+        --teal: #69c6c0;
+        --lavender: #c7c2f3;
+        --sun: #ffd48f;
+        --white: #ffffff;
+        --shadow: 0 18px 45px rgba(27, 31, 59, 0.16);
+        --radius-lg: 28px;
+        --radius-md: 18px;
+        --radius-sm: 12px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+        color: var(--ink);
+        background: linear-gradient(180deg, #fff 0%, #f8f4f0 100%);
+        line-height: 1.6;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .container {
+        width: min(1080px, 92vw);
+        margin: 0 auto;
+      }
+
+      .nav {
+        padding: 1.4rem 0;
+      }
+
+      .nav-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+
+      .brand {
+        font-weight: 700;
+        letter-spacing: 0.4px;
+      }
+
+      .brand span {
+        display: block;
+        font-weight: 500;
+        font-size: 0.85rem;
+        color: var(--ink-soft);
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
+
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: rgba(105, 198, 192, 0.18);
+        color: var(--ink);
+        padding: 0.35rem 0.9rem;
+        border-radius: 999px;
+        font-size: 0.9rem;
+        font-weight: 600;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.85rem 1.6rem;
+        border-radius: 999px;
+        font-weight: 700;
+        background: var(--coral);
+        color: var(--white);
+        box-shadow: var(--shadow);
+        border: none;
+        cursor: pointer;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 22px 50px rgba(27, 31, 59, 0.2);
+      }
+
+      .btn.secondary {
+        background: transparent;
+        color: var(--ink);
+        border: 1px solid rgba(27, 31, 59, 0.2);
+        box-shadow: none;
+      }
+
+      .hero {
+        padding: 2.6rem 0 1.5rem;
+      }
+
+      .hero h1 {
+        font-size: clamp(2.2rem, 3vw, 3rem);
+        margin: 1rem 0 0.8rem;
+      }
+
+      .lead {
+        max-width: 720px;
+        color: var(--ink-soft);
+      }
+
+      .section {
+        padding: 2rem 0 4rem;
+      }
+
+      .offer-grid {
+        display: grid;
+        grid-template-columns: minmax(320px, 1.25fr) minmax(280px, 1fr);
+        gap: 2rem;
+        align-items: start;
+      }
+
+      .card {
+        background: var(--white);
+        border-radius: var(--radius-lg);
+        padding: 2rem;
+        box-shadow: var(--shadow);
+      }
+
+      .card h2,
+      .card h3 {
+        margin-top: 0;
+      }
+
+      .list {
+        margin: 0.8rem 0 0;
+        padding-left: 1.1rem;
+        color: var(--ink-soft);
+      }
+
+      .list li {
+        margin-bottom: 0.5rem;
+      }
+
+      .price-box {
+        border-radius: var(--radius-md);
+        background: rgba(105, 198, 192, 0.12);
+        padding: 1.5rem;
+        margin-bottom: 1.4rem;
+      }
+
+      .price-label {
+        font-weight: 600;
+        margin: 0 0 0.4rem;
+      }
+
+      .price {
+        font-size: 2rem;
+        font-weight: 700;
+        margin: 0 0 0.4rem;
+      }
+
+      .price-sub {
+        margin: 0;
+        color: var(--ink-soft);
+      }
+
+      .form-grid {
+        display: grid;
+        gap: 1rem;
+      }
+
+      .form-field label {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 0.4rem;
+      }
+
+      .form-field input {
+        width: 100%;
+        padding: 0.7rem 0.85rem;
+        border-radius: var(--radius-sm);
+        border: 1px solid rgba(27, 31, 59, 0.2);
+        font-size: 1rem;
+        font-family: inherit;
+      }
+
+      .order-bump {
+        border: 1px solid rgba(27, 31, 59, 0.12);
+        border-radius: var(--radius-md);
+        padding: 1rem;
+        background: rgba(199, 194, 243, 0.2);
+        margin: 1.2rem 0;
+      }
+
+      .order-bump label {
+        display: flex;
+        gap: 0.6rem;
+        font-weight: 600;
+        color: var(--ink);
+      }
+
+      .total-line {
+        display: flex;
+        justify-content: space-between;
+        font-weight: 700;
+        margin: 1rem 0 1.4rem;
+      }
+
+      .form-helper {
+        color: var(--ink-soft);
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 860px) {
+        .offer-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .nav-inner {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="nav">
+      <div class="container nav-inner">
+        <div class="brand">
+          Healing Cosmos Presents
+          <span>The Thaw Method (TM)</span>
+        </div>
+        <a class="btn secondary" href="quiz.html">Back to quiz results</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container">
+          <span class="pill">Prominent Freeze Signature Course</span>
+          <h1>The Vigilant Mind - Frozen Body</h1>
+          <p class="lead">
+            Calm the scan, land in your body, and rebuild internal predictability without losing your sharpness.
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container offer-grid">
+          <div class="card">
+            <h2>Why your system uses this pattern</h2>
+            <p>
+              Your nervous system learned to survive by anticipating everything. Vigilance kept you safe, but now it
+              keeps your body on alert even when danger is not present. This course teaches your system how to land,
+              soften, and trust your inner signals again.
+            </p>
+
+            <h3>Thaw Mini-Guide</h3>
+            <ul class="list">
+              <li>Anchor awareness down into the belly, hips, and feet.</li>
+              <li>Pause three times today and name one predictable thing.</li>
+              <li>Use slow, warm exhales to tell your system it can land.</li>
+              <li>Hand on lower belly and heart, breathe until you feel grounded.</li>
+            </ul>
+
+            <h3>Your Freeze Signature</h3>
+            <p>Somatic clues:</p>
+            <ul class="list">
+              <li>Tight jaw or forehead tension.</li>
+              <li>Tension between the shoulder blades.</li>
+              <li>Shallow breath or cold body.</li>
+              <li>Eyes constantly on alert.</li>
+            </ul>
+
+            <h3>Organ Qi pattern: Kidney Qi depletion</h3>
+            <p>
+              In the Taoist model, Kidney Qi supports trust, courage, and inner predictability. When it is low, the
+              mind tries to compensate, creating overthinking, fear loops, and difficulty resting.
+            </p>
+
+            <h3>Your psychological story</h3>
+            <p>
+              You became safe by staying aware and prepared. Your mind became the protector. Now your body is ready to
+              learn safety too.
+            </p>
+
+            <h3>What you need right now</h3>
+            <ul class="list">
+              <li>Gentle grounding and slow, predictable breath practices.</li>
+              <li>Safety signals for the body, not just insight.</li>
+              <li>Micro-moments of stillness that do not feel like pressure.</li>
+            </ul>
+
+            <h3>Inside your personalized mini eBook</h3>
+            <ul class="list">
+              <li>What vigilance-based freeze really is (and is not).</li>
+              <li>The fear-breath connection and how to shift it.</li>
+              <li>Kidney Qi and the trust map.</li>
+              <li>The Inward Vigilance Shift technique.</li>
+            </ul>
+
+            <h3>Inside your 7-day micro-course</h3>
+            <ul class="list">
+              <li>Guided breathwork for internal predictability.</li>
+              <li>Somatic reset for jaw, throat, and diaphragm.</li>
+              <li>Qigong for Kidney Qi restoration.</li>
+              <li>Guided meditation: I Am Safe to Pause.</li>
+            </ul>
+
+            <h3>Your next step</h3>
+            <p>
+              This is your entry point into the Thaw Method. The full course teaches you how to end the vigilance loop,
+              trust your internal signals, and relax without losing awareness.
+            </p>
+          </div>
+
+          <aside class="card">
+            <h2>Checkout</h2>
+            <div class="price-box">
+              <p class="price-label">Prominent Freeze Signature Course</p>
+              <p class="price">$27</p>
+              <p class="price-sub">Immediate access to the mini eBook + 7-day micro-course.</p>
+            </div>
+
+            <div class="form-grid">
+              <div class="form-field">
+                <label for="checkout-name">Full name *</label>
+                <input id="checkout-name" name="name" type="text" required autocomplete="name" />
+              </div>
+              <div class="form-field">
+                <label for="checkout-email">Email *</label>
+                <input id="checkout-email" name="email" type="email" required autocomplete="email" />
+              </div>
+            </div>
+
+            <div class="order-bump">
+              <label for="bundle-bump">
+                <input id="bundle-bump" type="checkbox" />
+                Yes, upgrade to all 5 courses for $75 total (save $60 off $135 value). Best for holistic healing and
+                integration.
+              </label>
+            </div>
+
+            <div class="total-line">
+              <span id="total-label">Course total</span>
+              <span id="order-total">$27</span>
+            </div>
+
+            <button class="btn" type="button">Complete my order</button>
+            <p class="form-helper">Secure checkout placeholder. Trauma-informed and easy to follow.</p>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const bump = document.getElementById("bundle-bump");
+      const total = document.getElementById("order-total");
+      const totalLabel = document.getElementById("total-label");
+      const basePrice = 27;
+      const bundlePrice = 75;
+
+      const updateTotal = () => {
+        const price = bump.checked ? bundlePrice : basePrice;
+        total.textContent = `$${price}`;
+        totalLabel.textContent = bump.checked ? "Bundle total" : "Course total";
+      };
+
+      bump.addEventListener("change", updateTotal);
+      updateTotal();
+    </script>
+  </body>
+</html>
