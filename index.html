@@ -1,1 +1,1352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Thaw Method™ | Discover Your Functional Freeze Type</title>
+    <meta name="description" content="Take the free Functional Freeze Quiz and discover your freeze signature, your Freeze % score, and your personalized Thaw Pathway in less than 3 minutes.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Nunito+Sans:ital,opsz,wght@0,6..12,300;0,6..12,400;0,6..12,500;0,6..12,600;1,6..12,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #2d4a4a;
+            --color-primary-light: #3d6363;
+            --color-secondary: #9b8bb4;
+            --color-secondary-light: #b8aac9;
+            --color-accent: #c9a962;
+            --color-accent-light: #dbc38a;
+            --color-background: #faf9f7;
+            --color-background-warm: #f5f2ed;
+            --color-text: #2a2a2a;
+            --color-text-light: #5a5a5a;
+            --color-white: #ffffff;
+            --font-heading: 'Cormorant Garamond', Georgia, serif;
+            --font-body: 'Nunito Sans', 'Segoe UI', sans-serif;
+            --shadow-soft: 0 4px 20px rgba(45, 74, 74, 0.08);
+            --shadow-medium: 0 8px 40px rgba(45, 74, 74, 0.12);
+            --border-radius: 12px;
+            --transition: all 0.3s ease;
+        }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            font-size: 17px;
+            line-height: 1.7;
+            color: var(--color-text);
+            background-color: var(--color-background);
+            overflow-x: hidden;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-family: var(--font-heading);
+            font-weight: 500;
+            line-height: 1.2;
+            color: var(--color-primary);
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 600;
+        }
+
+        h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1.5rem;
+        }
+
+        h3 {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            margin-bottom: 1rem;
+        }
+
+        p {
+            margin-bottom: 1.25rem;
+        }
+
+        .highlight {
+            color: var(--color-secondary);
+        }
+
+        .accent {
+            color: var(--color-accent);
+        }
+
+        /* Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .container-narrow {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        @media (max-width: 768px) {
+            section {
+                padding: 60px 0;
+            }
+        }
+
+        /* Header / Navigation */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(250, 249, 247, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(45, 74, 74, 0.08);
+            padding: 16px 0;
+            transition: var(--transition);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--color-primary);
+            text-decoration: none;
+            letter-spacing: 0.5px;
+        }
+
+        .logo span {
+            color: var(--color-secondary);
+        }
+
+        .header-cta {
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 10px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .header-cta:hover {
+            background: var(--color-primary-light);
+            transform: translateY(-2px);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 18px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-family: var(--font-body);
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--color-accent), var(--color-accent-light));
+            color: var(--color-primary);
+            box-shadow: 0 4px 20px rgba(201, 169, 98, 0.35);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(201, 169, 98, 0.45);
+        }
+
+        .btn-secondary {
+            background: var(--color-primary);
+            color: var(--color-white);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-primary-light);
+            transform: translateY(-3px);
+        }
+
+        .btn-arrow {
+            transition: transform 0.3s ease;
+        }
+
+        .btn:hover .btn-arrow {
+            transform: translateX(4px);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 100px;
+            background: linear-gradient(180deg, var(--color-background) 0%, var(--color-background-warm) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 80%;
+            height: 150%;
+            background: radial-gradient(ellipse, rgba(155, 139, 180, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 60%;
+            height: 80%;
+            background: radial-gradient(ellipse, rgba(201, 169, 98, 0.06) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--color-white);
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--color-text-light);
+            margin-bottom: 32px;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .hero-badge svg {
+            color: var(--color-accent);
+        }
+
+        .hero h1 {
+            margin-bottom: 24px;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            color: var(--color-secondary);
+        }
+
+        .hero-subtitle {
+            font-size: 1.35rem;
+            color: var(--color-text-light);
+            max-width: 700px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+        }
+
+        .hero-cta-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .hero-trust {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: var(--color-text-light);
+            margin-top: 8px;
+        }
+
+        .hero-trust svg {
+            color: var(--color-primary);
+        }
+
+        /* Problem Section */
+        .problem {
+            background: var(--color-white);
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        @media (max-width: 900px) {
+            .problem-grid {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+        }
+
+        .problem-content h2 {
+            margin-bottom: 24px;
+        }
+
+        .problem-content h2 em {
+            font-style: italic;
+            color: var(--color-secondary);
+        }
+
+        .problem-lead {
+            font-size: 1.2rem;
+            color: var(--color-text-light);
+            margin-bottom: 32px;
+        }
+
+        .symptom-list {
+            list-style: none;
+        }
+
+        .symptom-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 16px;
+            font-size: 1.05rem;
+        }
+
+        .symptom-list li::before {
+            content: '✦';
+            color: var(--color-secondary);
+            font-size: 0.9rem;
+            margin-top: 4px;
+        }
+
+        .problem-visual {
+            position: relative;
+        }
+
+        .problem-card {
+            background: linear-gradient(145deg, var(--color-background-warm), var(--color-background));
+            border-radius: var(--border-radius);
+            padding: 48px;
+            box-shadow: var(--shadow-medium);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .problem-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-secondary), var(--color-accent));
+        }
+
+        .problem-card h3 {
+            color: var(--color-primary);
+            margin-bottom: 20px;
+        }
+
+        .problem-card p {
+            color: var(--color-text-light);
+            margin-bottom: 0;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* Discovery Section */
+        .discovery {
+            background: var(--color-primary);
+            color: var(--color-white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .discovery::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+
+        .discovery h2 {
+            color: var(--color-white);
+            text-align: center;
+            margin-bottom: 16px;
+        }
+
+        .discovery-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 600px;
+            margin: 0 auto 56px;
+        }
+
+        .discovery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            max-width: 1000px;
+            margin: 0 auto 56px;
+        }
+
+        .discovery-item {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius);
+            padding: 32px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .discovery-item:hover {
+            background: rgba(255, 255, 255, 0.12);
+            transform: translateY(-4px);
+        }
+
+        .discovery-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--color-accent), var(--color-accent-light));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.5rem;
+        }
+
+        .discovery-item h4 {
+            color: var(--color-white);
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+        }
+
+        .discovery-item p {
+            color: rgba(255, 255, 255, 0.75);
+            margin-bottom: 0;
+            font-size: 0.95rem;
+        }
+
+        .discovery-cta {
+            text-align: center;
+        }
+
+        /* Why Section */
+        .why {
+            background: var(--color-background-warm);
+        }
+
+        .why-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .why h2 {
+            margin-bottom: 24px;
+        }
+
+        .why-lead {
+            font-size: 1.3rem;
+            color: var(--color-text-light);
+            margin-bottom: 48px;
+        }
+
+        .why-points {
+            display: grid;
+            gap: 20px;
+            text-align: left;
+            max-width: 600px;
+            margin: 0 auto 48px;
+        }
+
+        .why-point {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            background: var(--color-white);
+            padding: 24px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .why-point-icon {
+            width: 40px;
+            height: 40px;
+            min-width: 40px;
+            background: linear-gradient(135deg, var(--color-secondary-light), var(--color-secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-white);
+        }
+
+        .why-point p {
+            margin-bottom: 0;
+            font-size: 1.05rem;
+        }
+
+        .why-cta {
+            text-align: center;
+        }
+
+        /* Creator Section */
+        .creator {
+            background: var(--color-white);
+        }
+
+        .creator-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 64px;
+            align-items: center;
+        }
+
+        @media (max-width: 900px) {
+            .creator-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        .creator-image {
+            position: relative;
+        }
+
+        .creator-image-wrapper {
+            width: 100%;
+            max-width: 320px;
+            aspect-ratio: 1;
+            background: linear-gradient(145deg, var(--color-secondary-light), var(--color-primary-light));
+            border-radius: 50%;
+            padding: 8px;
+            margin: 0 auto;
+        }
+
+        .creator-image-inner {
+            width: 100%;
+            height: 100%;
+            background: var(--color-background-warm);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-heading);
+            font-size: 4rem;
+            color: var(--color-primary);
+        }
+
+        .creator-content h2 {
+            margin-bottom: 24px;
+        }
+
+        .creator-content h2 em {
+            font-style: italic;
+        }
+
+        .creator-lead {
+            font-size: 1.15rem;
+            color: var(--color-text-light);
+            margin-bottom: 32px;
+        }
+
+        .creator-benefits {
+            list-style: none;
+            margin-bottom: 32px;
+        }
+
+        .creator-benefits li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 16px;
+            font-size: 1.05rem;
+        }
+
+        .creator-benefits li::before {
+            content: '✔';
+            color: var(--color-primary);
+            font-weight: 700;
+        }
+
+        /* Results Section */
+        .results {
+            background: linear-gradient(180deg, var(--color-background) 0%, var(--color-white) 100%);
+        }
+
+        .results h2 {
+            text-align: center;
+            margin-bottom: 16px;
+        }
+
+        .results-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--color-text-light);
+            max-width: 600px;
+            margin: 0 auto 56px;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            max-width: 1000px;
+            margin: 0 auto 56px;
+        }
+
+        .result-card {
+            background: var(--color-white);
+            border-radius: var(--border-radius);
+            padding: 32px;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid rgba(45, 74, 74, 0.06);
+            transition: var(--transition);
+        }
+
+        .result-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .result-card-icon {
+            font-size: 2rem;
+            margin-bottom: 16px;
+        }
+
+        .result-card h4 {
+            color: var(--color-primary);
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+        }
+
+        .result-card p {
+            color: var(--color-text-light);
+            margin-bottom: 0;
+        }
+
+        .results-cta {
+            text-align: center;
+        }
+
+        /* Quiz Section */
+        .quiz-section {
+            background: var(--color-primary);
+            color: var(--color-white);
+            text-align: center;
+        }
+
+        .quiz-section h2 {
+            color: var(--color-white);
+            margin-bottom: 16px;
+        }
+
+        .quiz-section .quiz-subtitle {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .quiz-embed-placeholder {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px dashed rgba(255, 255, 255, 0.3);
+            border-radius: var(--border-radius);
+            padding: 80px 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .quiz-embed-placeholder p {
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 24px;
+        }
+
+        /* FAQ Section */
+        .faq {
+            background: var(--color-background-warm);
+        }
+
+        .faq h2 {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--color-white);
+            border-radius: var(--border-radius);
+            margin-bottom: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .faq-question {
+            width: 100%;
+            text-align: left;
+            padding: 24px 32px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--color-primary);
+            transition: var(--transition);
+        }
+
+        .faq-question:hover {
+            background: rgba(45, 74, 74, 0.02);
+        }
+
+        .faq-question svg {
+            transition: transform 0.3s ease;
+            color: var(--color-secondary);
+        }
+
+        .faq-item.active .faq-question svg {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+        }
+
+        .faq-answer-inner {
+            padding: 0 32px 24px;
+            color: var(--color-text-light);
+            line-height: 1.8;
+        }
+
+        /* Final CTA Section */
+        .final-cta {
+            background: linear-gradient(180deg, var(--color-background) 0%, var(--color-background-warm) 100%);
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .final-cta h2 {
+            margin-bottom: 24px;
+        }
+
+        .final-cta-text {
+            font-size: 1.2rem;
+            color: var(--color-text-light);
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .final-cta-trust {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 32px;
+            margin-top: 32px;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95rem;
+            color: var(--color-text-light);
+        }
+
+        .trust-item svg {
+            color: var(--color-primary);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--color-primary);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 48px 0;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--color-white);
+            margin-bottom: 16px;
+        }
+
+        .footer-logo span {
+            color: var(--color-accent);
+        }
+
+        .footer p {
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+
+        .footer a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer a:hover {
+            color: var(--color-white);
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .float-animation {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        /* Utility */
+        .text-center {
+            text-align: center;
+        }
+
+        .mb-0 {
+            margin-bottom: 0 !important;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                padding-top: 80px;
+                min-height: auto;
+                padding-bottom: 60px;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .btn {
+                padding: 16px 32px;
+                font-size: 1rem;
+            }
+
+            .problem-card {
+                padding: 32px;
+            }
+
+            .creator-image-wrapper {
+                max-width: 200px;
+            }
+
+            .creator-image-inner {
+                font-size: 3rem;
+            }
+
+            .header-cta {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-inner">
+                <a href="/" class="logo">Healing Cosmos <span>•</span> The Thaw Method</a>
+                <a href="#quiz" class="header-cta">Take the Quiz</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                    </svg>
+                    Free 3-Minute Assessment
+                </div>
+                <h1>You're Not Broken.<br><em>You're Frozen.</em></h1>
+                <p class="hero-subtitle">Discover your unique Freeze Signature and unlock your personalized Thaw Pathway — the first step to reclaiming your energy, clarity, and inner peace.</p>
+                <div class="hero-cta-wrapper">
+                    <a href="#quiz" class="btn btn-primary">
+                        Take the Functional Freeze Quiz
+                        <svg class="btn-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </a>
+                    <div class="hero-trust">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        </svg>
+                        100% Confidential • Trauma-Safe • No Graphic Questions
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="problem">
+        <div class="container">
+            <div class="problem-grid">
+                <div class="problem-content">
+                    <h2>When Life Overwhelms Your System,<br><em>It Adapts by Freezing</em></h2>
+                    <p class="problem-lead">This isn't failure — it's protection. But when you stay frozen for too long, you experience:</p>
+                    <ul class="symptom-list">
+                        <li>Chronic overthinking that never leads anywhere</li>
+                        <li>Emotional numbness or constant avoidance</li>
+                        <li>Hyper-vigilance and unexplained tension</li>
+                        <li>Paralysis when making even simple decisions</li>
+                        <li>Looping trauma patterns you can't seem to break</li>
+                        <li>Burnout, sensitivity, or complete shutdown</li>
+                        <li>The feeling that "something is off" — but not knowing what</li>
+                    </ul>
+                </div>
+                <div class="problem-visual">
+                    <div class="problem-card">
+                        <h3>Here's What Most People Get Wrong</h3>
+                        <p>You can't out-think a freeze.<br><br>Pushing harder, analyzing more, or chasing motivation won't work — because freeze patterns don't melt through force.<br><br>They melt through <strong>precision</strong>, <strong>compassion</strong>, and <strong>predictability</strong>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Discovery Section -->
+    <section class="discovery">
+        <div class="container">
+            <h2>In Less Than 3 Minutes, Discover:</h2>
+            <p class="discovery-subtitle">Everything you need to understand what's really happening inside your nervous system</p>
+            <div class="discovery-grid">
+                <div class="discovery-item">
+                    <div class="discovery-icon">🔍</div>
+                    <h4>Your Freeze Signature</h4>
+                    <p>Identify your dominant freeze style among 5 distinct patterns</p>
+                </div>
+                <div class="discovery-item">
+                    <div class="discovery-icon">📊</div>
+                    <h4>Your Freeze Percentage</h4>
+                    <p>See exactly how frozen your system currently is right now</p>
+                </div>
+                <div class="discovery-item">
+                    <div class="discovery-icon">💡</div>
+                    <h4>Why Your System Does This</h4>
+                    <p>Understand the protective logic behind your patterns</p>
+                </div>
+                <div class="discovery-item">
+                    <div class="discovery-icon">🔓</div>
+                    <h4>What Keeps You Stuck</h4>
+                    <p>Identify the specific blocks maintaining your freeze</p>
+                </div>
+                <div class="discovery-item">
+                    <div class="discovery-icon">🗺️</div>
+                    <h4>Your Thaw Pathway</h4>
+                    <p>Receive a personalized plan based on your unique type</p>
+                </div>
+                <div class="discovery-item">
+                    <div class="discovery-icon">🌱</div>
+                    <h4>Your Hidden Strengths</h4>
+                    <p>Discover what your freeze pattern reveals about your gifts</p>
+                </div>
+            </div>
+            <div class="discovery-cta">
+                <a href="#quiz" class="btn btn-primary">
+                    Discover Your Freeze Signature
+                    <svg class="btn-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Section -->
+    <section class="why">
+        <div class="container">
+            <div class="why-content">
+                <h2>Why This Quiz Changes Everything</h2>
+                <p class="why-lead">Most healing approaches fail because they treat symptoms, not your unique freeze pattern. This quiz helps you:</p>
+                <div class="why-points">
+                    <div class="why-point">
+                        <div class="why-point-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="12" y1="8" x2="12" y2="12"></line>
+                                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                            </svg>
+                        </div>
+                        <p><strong>Finally name what's happening inside you</strong> — stop wondering and start understanding</p>
+                    </div>
+                    <div class="why-point">
+                        <div class="why-point-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </div>
+                        <p><strong>Understand why your patterns make perfect sense</strong> — your system was protecting you all along</p>
+                    </div>
+                    <div class="why-point">
+                        <div class="why-point-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                                <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                            </svg>
+                        </div>
+                        <p><strong>Stop blaming yourself for trauma responses</strong> — it was never a character flaw</p>
+                    </div>
+                    <div class="why-point">
+                        <div class="why-point-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                            </svg>
+                        </div>
+                        <p><strong>Recognize your strengths, not just symptoms</strong> — your freeze carries hidden gifts</p>
+                    </div>
+                    <div class="why-point">
+                        <div class="why-point-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                            </svg>
+                        </div>
+                        <p><strong>Receive a personalized plan that works for YOUR system</strong> — not generic advice</p>
+                    </div>
+                </div>
+                <div class="why-cta">
+                    <a href="#quiz" class="btn btn-secondary">
+                        Get Your Personalized Thaw Plan
+                        <svg class="btn-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Creator Section -->
+    <section class="creator">
+        <div class="container">
+            <div class="creator-grid">
+                <div class="creator-image">
+                    <div class="creator-image-wrapper">
+                        <div class="creator-image-inner">HC</div>
+                    </div>
+                </div>
+                <div class="creator-content">
+                    <h2>Created by a Trauma-Informed<br><em>Nervous System Expert</em></h2>
+                    <p class="creator-lead">After decades of working with trauma, freeze states, somatic practices, qigong, and the neuroscience of regulation, I discovered a pattern:</p>
+                    <p><strong>There are 5 core Freeze Signatures that shape how people shut down — and more importantly, how they can thaw.</strong></p>
+                    <p>This method was born from thousands of hours of training, client work, personal experience, and deep contemplative study. The Thaw Method™ helps you:</p>
+                    <ul class="creator-benefits">
+                        <li>Build internal predictability your system can trust</li>
+                        <li>Melt the freeze safely — without retraumatization</li>
+                        <li>Reclaim access to your natural energy and intuition</li>
+                        <li>Rewire patterns at the nervous system level</li>
+                        <li>Restore your natural clarity and confidence</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section class="results">
+        <div class="container">
+            <h2>What You'll Receive — Instantly & Free</h2>
+            <p class="results-subtitle">The moment you complete the quiz, you'll unlock:</p>
+            <div class="results-grid">
+                <div class="result-card">
+                    <div class="result-card-icon">✨</div>
+                    <h4>Your Freeze Signature Type</h4>
+                    <p>A detailed breakdown of your unique freeze pattern and what it reveals about your nervous system's protective strategy.</p>
+                </div>
+                <div class="result-card">
+                    <div class="result-card-icon">📈</div>
+                    <h4>Your Freeze % Score</h4>
+                    <p>A precise measurement showing how frozen your system currently is — and what that means for your healing journey.</p>
+                </div>
+                <div class="result-card">
+                    <div class="result-card-icon">📖</div>
+                    <h4>Your Thaw Mini-Guide</h4>
+                    <p>A personalized guide with specific practices and insights tailored to your exact freeze signature.</p>
+                </div>
+            </div>
+            <div class="results-cta">
+                <a href="#quiz" class="btn btn-primary">
+                    Get Your Free Results Now
+                    <svg class="btn-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quiz Embed Section -->
+    <section class="quiz-section" id="quiz">
+        <div class="container">
+            <h2>Take the Functional Freeze Quiz</h2>
+            <p class="quiz-subtitle">5 simple questions. 3 minutes. Life-changing clarity.</p>
+            <div class="quiz-embed-placeholder">
+                <p>[ Quiz will be embedded here ]</p>
+                <a href="#" class="btn btn-primary" id="start-quiz-btn">
+                    Start the Quiz
+                    <svg class="btn-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Is this quiz trauma-safe?
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            Yes, absolutely. This quiz was designed with trauma-informed principles at its core. It identifies patterns, not stories. There are no graphic, activating, or retraumatizing questions. Your nervous system's safety is our top priority.
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        What if I score high on freeze?
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            A high freeze score isn't bad news — it's valuable information. You'll receive a gentle, step-by-step pathway specifically designed to honor your system's pace. Remember: your nervous system froze for good reasons. We help you thaw safely, not forcefully.
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        How long does the quiz take?
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            Less than 3 minutes. The quiz consists of just 5 thoughtfully designed questions that reveal your Freeze Signature with remarkable accuracy. Your results are delivered instantly upon completion.
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Does this replace therapy?
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            No, and it's not intended to. However, many people find that this quiz provides the clarity they wish they'd had before starting therapy. Understanding your Freeze Signature can make therapeutic work more targeted and effective.
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Is my information kept confidential?
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            100%. Your answers are completely confidential. This is a judgment-free sanctuary for healing. We never share your personal information, and your responses are used only to generate your personalized results.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="final-cta">
+        <div class="container">
+            <h2>Ready to Understand What's Really<br>Happening Inside You?</h2>
+            <p class="final-cta-text">Your nervous system has been waiting for this moment — the moment you finally understand its protective wisdom and begin the journey of gentle, safe thawing.</p>
+            <a href="#quiz" class="btn btn-primary">
+                Take the Quiz & Get Your Thaw Plan
+                <svg class="btn-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+            </a>
+            <div class="final-cta-trust">
+                <div class="trust-item">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                    Takes less than 3 minutes
+                </div>
+                <div class="trust-item">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    </svg>
+                    100% confidential
+                </div>
+                <div class="trust-item">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                    </svg>
+                    Trauma-safe questions
+                </div>
+                <div class="trust-item">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    Instant results
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-logo">Healing Cosmos <span>•</span> The Thaw Method™</div>
+            <p>A trauma-informed approach to nervous system healing</p>
+            <p>&copy; 2024 Healing Cosmos. All Rights Reserved.</p>
+            <p><a href="https://healingcosmos.com" target="_blank">healingcosmos.com</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const faqItem = button.parentElement;
+                const isActive = faqItem.classList.contains('active');
+                
+                // Close all FAQ items
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                // Open clicked item if it wasn't already open
+                if (!isActive) {
+                    faqItem.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header scroll effect
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                header.style.boxShadow = '0 2px 20px rgba(45, 74, 74, 0.1)';
+            } else {
+                header.style.boxShadow = 'none';
+            }
+            
+            lastScroll = currentScroll;
+        });
+
+        // Quiz placeholder - ready for quiz implementation
+        document.getElementById('start-quiz-btn').addEventListener('click', function(e) {
+            e.preventDefault();
+            // This will be replaced with actual quiz functionality
+            alert('Quiz coming soon! The quiz component will be integrated here.');
+        });
+    </script>
+</body>
+</html>
