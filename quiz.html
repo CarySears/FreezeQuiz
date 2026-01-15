@@ -270,6 +270,18 @@
         border: 1px solid rgba(27, 31, 59, 0.08);
       }
 
+      .result-primary::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        background:
+          radial-gradient(circle at 15% 10%, rgba(255, 212, 143, 0.45), transparent 60%),
+          radial-gradient(circle at 80% 20%, rgba(105, 198, 192, 0.35), transparent 55%);
+        opacity: 0;
+        pointer-events: none;
+      }
+
       .result-badge {
         display: inline-block;
         background: rgba(27, 31, 59, 0.12);
@@ -334,59 +346,148 @@
       }
 
       .sparkle span {
-        width: 8px;
-        height: 8px;
+        width: 10px;
+        height: 10px;
         border-radius: 50%;
         background: var(--sun);
+        box-shadow: 0 0 14px rgba(255, 212, 143, 0.85);
         opacity: 0;
         transform: translateY(8px) scale(0.6);
+        --x1: 0px;
+        --y1: -12px;
+        --x2: 0px;
+        --y2: -26px;
       }
 
       .quiz-results.celebrate .sparkle span {
-        animation: sparkle 1s ease-out forwards;
+        animation: sparkle 1.2s ease-out forwards;
       }
 
       .quiz-results.celebrate .result-primary {
-        animation: resultPop 0.6s ease-out;
+        animation: resultPop 0.7s ease-out;
+      }
+
+      .quiz-results.celebrate .result-primary::after {
+        animation: glowPulse 1.2s ease-out forwards;
       }
 
       .quiz-results.celebrate .sparkle span:nth-child(2) {
         animation-delay: 0.1s;
+        background: var(--teal);
+        box-shadow: 0 0 14px rgba(105, 198, 192, 0.7);
+        --x1: 10px;
+        --y1: -18px;
+        --x2: 18px;
+        --y2: -32px;
       }
 
       .quiz-results.celebrate .sparkle span:nth-child(3) {
         animation-delay: 0.2s;
+        --x1: -12px;
+        --y1: -20px;
+        --x2: -20px;
+        --y2: -34px;
       }
 
       .quiz-results.celebrate .sparkle span:nth-child(4) {
         animation-delay: 0.3s;
+        background: var(--lavender);
+        box-shadow: 0 0 14px rgba(199, 194, 243, 0.7);
+        --x1: 6px;
+        --y1: -10px;
+        --x2: 14px;
+        --y2: -26px;
       }
 
       .quiz-results.celebrate .sparkle span:nth-child(5) {
         animation-delay: 0.4s;
+        --x1: -6px;
+        --y1: -8px;
+        --x2: -12px;
+        --y2: -22px;
+      }
+
+      .quiz-results.celebrate .sparkle span:nth-child(6) {
+        animation-delay: 0.5s;
+        background: var(--teal);
+        box-shadow: 0 0 14px rgba(105, 198, 192, 0.7);
+        --x1: 16px;
+        --y1: -12px;
+        --x2: 26px;
+        --y2: -30px;
+      }
+
+      .quiz-results.celebrate .sparkle span:nth-child(7) {
+        animation-delay: 0.6s;
+        --x1: -18px;
+        --y1: -14px;
+        --x2: -26px;
+        --y2: -30px;
+      }
+
+      .quiz-results.celebrate .sparkle span:nth-child(8) {
+        animation-delay: 0.7s;
+        background: var(--lavender);
+        box-shadow: 0 0 14px rgba(199, 194, 243, 0.7);
+        --x1: 4px;
+        --y1: -22px;
+        --x2: 12px;
+        --y2: -38px;
+      }
+
+      .quiz-results.celebrate .sparkle span:nth-child(9) {
+        animation-delay: 0.8s;
+        --x1: -4px;
+        --y1: -18px;
+        --x2: -10px;
+        --y2: -34px;
+      }
+
+      .quiz-results.celebrate .sparkle span:nth-child(10) {
+        animation-delay: 0.9s;
+        background: var(--teal);
+        box-shadow: 0 0 14px rgba(105, 198, 192, 0.7);
+        --x1: 12px;
+        --y1: -26px;
+        --x2: 20px;
+        --y2: -42px;
       }
 
       @keyframes sparkle {
         0% {
           opacity: 0;
-          transform: translateY(8px) scale(0.6);
+          transform: translate(0px, 10px) scale(0.6);
         }
         50% {
           opacity: 1;
-          transform: translateY(-4px) scale(1);
+          transform: translate(var(--x1), var(--y1)) scale(1.25);
         }
         100% {
           opacity: 0;
-          transform: translateY(-12px) scale(0.6);
+          transform: translate(var(--x2), var(--y2)) scale(0.4);
+        }
+      }
+
+      @keyframes glowPulse {
+        0% {
+          opacity: 0;
+          transform: scale(0.98);
+        }
+        40% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+          transform: scale(1.03);
         }
       }
 
       @keyframes resultPop {
         0% {
-          transform: scale(0.98);
+          transform: scale(0.96);
         }
         60% {
-          transform: scale(1.02);
+          transform: scale(1.03);
         }
         100% {
           transform: scale(1);
@@ -478,6 +579,11 @@
                 <h3 id="primary-name"></h3>
                 <p id="primary-desc"></p>
                 <div class="sparkle" aria-hidden="true">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
                   <span></span>
                   <span></span>
                   <span></span>
