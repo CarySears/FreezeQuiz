@@ -847,8 +847,33 @@
       };
 
       if (quizElements.app) {
+        const RESULTS_KEY = "thawQuizResults";
         let currentIndex = 0;
         const responses = Array(quizQuestions.length).fill(null);
+
+        const loadSavedResults = () => {
+          try {
+            const raw = localStorage.getItem(RESULTS_KEY);
+            if (!raw) {
+              return null;
+            }
+            const data = JSON.parse(raw);
+            if (!Array.isArray(data.percents) || typeof data.primaryIndex !== "number") {
+              return null;
+            }
+            return data;
+          } catch (error) {
+            return null;
+          }
+        };
+
+        const saveResults = (data) => {
+          try {
+            localStorage.setItem(RESULTS_KEY, JSON.stringify(data));
+          } catch (error) {
+            return;
+          }
+        };
 
         const updateProgress = (labelOverride) => {
           if (quizElements.step) {
@@ -938,8 +963,9 @@
           return { percents, primaryIndex, answered };
         };
 
-        const renderResults = () => {
-          const { percents, primaryIndex, answered } = calculateResults();
+        const renderResults = (saved) => {
+          const data = saved || calculateResults();
+          const { percents, primaryIndex, answered } = data;
           const primary = quizCategories[primaryIndex];
           quizElements.primaryName.textContent = `${primary.name} (${percents[primaryIndex]}%)`;
           quizElements.primaryDesc.textContent =
@@ -1001,6 +1027,15 @@
           quizElements.offerClose.textContent = offer.close;
           quizElements.offerCta.textContent = offer.ctaLabel;
           quizElements.offerCta.href = offer.checkout;
+
+          if (!saved) {
+            saveResults({
+              percents,
+              primaryIndex,
+              answered,
+              savedAt: Date.now(),
+            });
+          }
         };
 
         quizElements.skip.addEventListener("click", () => {
@@ -1032,7 +1067,14 @@
           showResults();
         });
 
-        renderQuestion();
+        const params = new URLSearchParams(window.location.search);
+        const savedResults = loadSavedResults();
+        if (params.has("results") && savedResults) {
+          renderResults(savedResults);
+          showResults();
+        } else {
+          renderQuestion();
+        }
       }
     </script>
   </body>
