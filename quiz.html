@@ -104,6 +104,14 @@
         box-shadow: 0 22px 50px rgba(27, 31, 59, 0.2);
       }
 
+      .btn:disabled,
+      .btn[disabled] {
+        opacity: 0.6;
+        cursor: not-allowed;
+        transform: none;
+        box-shadow: none;
+      }
+
       .btn.secondary {
         background: transparent;
         color: var(--ink);
@@ -222,6 +230,11 @@
         margin-top: 1.4rem;
         gap: 1rem;
         flex-wrap: wrap;
+      }
+
+      #quiz-helper {
+        flex-basis: 100%;
+        margin: 0;
       }
 
       .quiz-form {
@@ -523,8 +536,8 @@
           <span class="pill">Functional Freeze Quiz</span>
           <h1>Discover your Freeze Signature</h1>
           <p class="lead">
-            Answer five quick questions and receive your Freeze Signature Type, Freeze % score, and a calm + clarity
-            Thaw Plan. Trauma-informed. No graphic questions.
+            Select all that apply across five quick questions and receive your Freeze Signature Type, Freeze % score,
+            and a calm + clarity Thaw Plan. Trauma-informed. No graphic questions.
           </p>
         </div>
       </section>
@@ -541,10 +554,11 @@
             <div class="quiz-body" id="quiz-body">
               <h3 class="quiz-question" id="quiz-question"></h3>
               <div class="quiz-options" id="quiz-options"></div>
-              <button class="quiz-skip" id="quiz-skip" type="button">None of these resonate</button>
+              <button class="quiz-skip" id="quiz-skip" type="button">None of these apply right now</button>
               <div class="quiz-nav">
                 <button class="btn secondary" id="quiz-back" type="button">Back</button>
-                <p class="form-helper">Choose the option that fits best right now.</p>
+                <button class="btn" id="quiz-next" type="button">Continue</button>
+                <p class="form-helper" id="quiz-helper">Choose all that apply, then press Continue.</p>
               </div>
             </div>
             <form class="quiz-form hidden" id="quiz-form">
@@ -574,6 +588,7 @@
             <div class="quiz-results hidden" id="quiz-results">
               <h3>Your Freeze Signature Results</h3>
               <p class="lead">Thank you for taking the time to complete this quiz.</p>
+              <p class="form-helper" id="result-summary"></p>
               <div class="result-primary" id="result-primary">
                 <div class="result-badge">Primary Freeze Signature</div>
                 <h3 id="primary-name"></h3>
@@ -766,7 +781,7 @@
 
       const quizQuestions = [
         {
-          prompt: "Which statement feels most true?",
+          prompt: "Which statements feel most true right now?",
           options: [
             "I need to anticipate danger to stay safe.",
             "I never seem to have enough energy.",
@@ -774,10 +789,10 @@
             "I carry grief or sadness I cannot fully express.",
             "I bottle up frustration until it explodes or implodes.",
           ],
-          skipLabel: "None of these resonate",
+          skipLabel: "None of these apply right now",
         },
         {
-          prompt: "What happens in your relationships?",
+          prompt: "What tends to happen in your relationships?",
           options: [
             "I get stuck in my head and worry about what people think.",
             "I shut down and lack the energy to stay engaged.",
@@ -785,10 +800,10 @@
             "I feel unseen or weighed down.",
             "I feel resentment or irritation but do not express it.",
           ],
-          skipLabel: "None of these resonate",
+          skipLabel: "None of these apply right now",
         },
         {
-          prompt: "When you try to relax, what stops you?",
+          prompt: "When you try to relax, what gets in the way?",
           options: [
             "My mind will not slow down.",
             "Relaxation feels like collapsing even more.",
@@ -799,7 +814,7 @@
           skipLabel: "I can relax when I decide to / None of the above",
         },
         {
-          prompt: "What best describes your childhood pattern?",
+          prompt: "Which childhood patterns feel familiar?",
           options: [
             "Hyper-alert, careful, managing danger.",
             "Not seen, not supported, had to shrink.",
@@ -832,11 +847,13 @@
         options: document.getElementById("quiz-options"),
         skip: document.getElementById("quiz-skip"),
         back: document.getElementById("quiz-back"),
+        next: document.getElementById("quiz-next"),
         form: document.getElementById("quiz-form"),
         formBack: document.getElementById("quiz-form-back"),
         results: document.getElementById("quiz-results"),
         primaryName: document.getElementById("primary-name"),
         primaryDesc: document.getElementById("primary-desc"),
+        resultSummary: document.getElementById("result-summary"),
         resultGrid: document.getElementById("result-grid"),
         offerTitle: document.getElementById("offer-title"),
         offerCopy: document.getElementById("offer-copy"),
@@ -849,7 +866,7 @@
       if (quizElements.app) {
         const RESULTS_KEY = "thawQuizResults";
         let currentIndex = 0;
-        const responses = Array(quizQuestions.length).fill(null);
+        const responses = Array.from({ length: quizQuestions.length }, () => []);
 
         const loadSavedResults = () => {
           try {
@@ -861,7 +878,19 @@
             if (!Array.isArray(data.percents) || typeof data.primaryIndex !== "number") {
               return null;
             }
-            return data;
+            const selectionCount =
+              typeof data.selectionCount === "number"
+                ? data.selectionCount
+                : typeof data.answered === "number"
+                ? data.answered
+                : 0;
+            const answeredQuestions =
+              typeof data.answeredQuestions === "number"
+                ? data.answeredQuestions
+                : typeof data.answered === "number"
+                ? data.answered
+                : 0;
+            return { ...data, selectionCount, answeredQuestions };
           } catch (error) {
             return null;
           }
@@ -886,6 +915,14 @@
           }
         };
 
+        const updateNextState = () => {
+          if (!quizElements.next) {
+            return;
+          }
+          const selections = responses[currentIndex];
+          quizElements.next.disabled = !Array.isArray(selections) || selections.length === 0;
+        };
+
         const renderQuestion = () => {
           const currentQuestion = quizQuestions[currentIndex];
           quizElements.question.textContent = currentQuestion.prompt;
@@ -896,22 +933,37 @@
             button.type = "button";
             button.className = "quiz-option";
             button.textContent = option;
-            if (responses[currentIndex] === index) {
+            const selections = responses[currentIndex];
+            const isSelected = Array.isArray(selections) && selections.includes(index);
+            if (isSelected) {
               button.classList.add("selected");
             }
+            button.setAttribute("aria-pressed", isSelected ? "true" : "false");
             button.addEventListener("click", () => {
-              responses[currentIndex] = index;
-              button.classList.add("selected");
-              setTimeout(() => {
-                goNext();
-              }, 120);
+              const nextSelections = responses[currentIndex];
+              if (!Array.isArray(nextSelections)) {
+                responses[currentIndex] = [];
+              }
+              const selectedList = responses[currentIndex];
+              const existingIndex = selectedList.indexOf(index);
+              if (existingIndex >= 0) {
+                selectedList.splice(existingIndex, 1);
+                button.classList.remove("selected");
+                button.setAttribute("aria-pressed", "false");
+              } else {
+                selectedList.push(index);
+                button.classList.add("selected");
+                button.setAttribute("aria-pressed", "true");
+              }
+              updateNextState();
             });
             quizElements.options.appendChild(button);
           });
 
-          quizElements.skip.textContent = currentQuestion.skipLabel || "None of these resonate";
+          quizElements.skip.textContent = currentQuestion.skipLabel || "None of these apply right now";
           quizElements.back.style.visibility = currentIndex === 0 ? "hidden" : "visible";
           updateProgress();
+          updateNextState();
         };
 
         const goNext = () => {
@@ -944,15 +996,21 @@
 
         const calculateResults = () => {
           const totals = quizCategories.map(() => 0);
-          let answered = 0;
+          let selectionCount = 0;
+          let answeredQuestions = 0;
           responses.forEach((value) => {
-            if (value !== null) {
-              totals[value] += 1;
-              answered += 1;
+            if (Array.isArray(value) && value.length > 0) {
+              answeredQuestions += 1;
+              value.forEach((index) => {
+                if (Number.isInteger(index) && totals[index] !== undefined) {
+                  totals[index] += 1;
+                  selectionCount += 1;
+                }
+              });
             }
           });
           const percents = totals.map((count) =>
-            answered === 0 ? 0 : Math.round((count / answered) * 100)
+            selectionCount === 0 ? 0 : Math.round((count / selectionCount) * 100)
           );
           let primaryIndex = 0;
           percents.forEach((percent, index) => {
@@ -960,24 +1018,41 @@
               primaryIndex = index;
             }
           });
-          return { percents, primaryIndex, answered };
+          return { percents, primaryIndex, selectionCount, answeredQuestions };
         };
 
         const renderResults = (saved) => {
           const data = saved || calculateResults();
-          const { percents, primaryIndex, answered } = data;
+          const { percents, primaryIndex } = data;
+          const selectionCount =
+            typeof data.selectionCount === "number"
+              ? data.selectionCount
+              : typeof data.answered === "number"
+              ? data.answered
+              : 0;
+          const answeredQuestions =
+            typeof data.answeredQuestions === "number"
+              ? data.answeredQuestions
+              : selectionCount;
+          const totalQuestions = quizQuestions.length;
           const primary = quizCategories[primaryIndex];
           quizElements.primaryName.textContent = `${primary.name} (${percents[primaryIndex]}%)`;
           quizElements.primaryDesc.textContent =
-            answered === 0
+            selectionCount === 0
               ? "No dominant pattern selected yet. You can retake the quiz and choose the closest fit."
               : primary.description;
+          if (quizElements.resultSummary) {
+            quizElements.resultSummary.textContent =
+              selectionCount === 0
+                ? "No selections were recorded for this quiz yet."
+                : `You selected ${selectionCount} signals across ${answeredQuestions} of ${totalQuestions} questions. Percentages reflect your selections.`;
+          }
 
           quizElements.resultGrid.innerHTML = "";
           quizCategories.forEach((category, index) => {
             const card = document.createElement("div");
             card.className = "result-card";
-            if (index === primaryIndex && answered > 0) {
+            if (index === primaryIndex && selectionCount > 0) {
               card.classList.add("primary");
             }
 
@@ -997,7 +1072,7 @@
             quizElements.resultGrid.appendChild(card);
           });
 
-          if (answered === 0) {
+          if (selectionCount === 0) {
             quizElements.offerTitle.textContent = "Not sure yet?";
             quizElements.offerCopy.textContent =
               "Retake the quiz and choose the closest match so we can guide you to the right course.";
@@ -1032,14 +1107,15 @@
             saveResults({
               percents,
               primaryIndex,
-              answered,
+              selectionCount,
+              answeredQuestions,
               savedAt: Date.now(),
             });
           }
         };
 
         quizElements.skip.addEventListener("click", () => {
-          responses[currentIndex] = null;
+          responses[currentIndex] = [];
           goNext();
         });
 
@@ -1048,6 +1124,14 @@
             currentIndex -= 1;
             renderQuestion();
           }
+        });
+
+        quizElements.next.addEventListener("click", () => {
+          const selections = responses[currentIndex];
+          if (!Array.isArray(selections) || selections.length === 0) {
+            return;
+          }
+          goNext();
         });
 
         quizElements.formBack.addEventListener("click", () => {
