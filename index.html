@@ -229,17 +229,90 @@
         border: 0;
       }
 
-      .vsl-placeholder {
+      .vsl-embed {
+        position: absolute;
+        inset: 0;
+      }
+
+      .vsl-cover {
         position: absolute;
         inset: 0;
         display: flex;
+        align-items: flex-end;
+        justify-content: flex-start;
+        padding: 2.2rem;
+        text-decoration: none;
+        color: #ffffff;
+        background-image: linear-gradient(
+            120deg,
+            rgba(10, 14, 30, 0.88) 0%,
+            rgba(10, 14, 30, 0.5) 45%,
+            rgba(10, 14, 30, 0.85) 100%
+          ),
+          url("https://img.youtube.com/vi/vU2zDjprdDU/maxresdefault.jpg");
+        background-size: cover;
+        background-position: center;
+        transition: opacity 240ms ease, transform 240ms ease;
+      }
+
+      .vsl-cover:hover {
+        transform: scale(1.01);
+      }
+
+      .vsl-cover.is-hidden {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .vsl-cover-content {
+        max-width: 420px;
+        display: grid;
+        gap: 0.65rem;
+        text-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+      }
+
+      .vsl-kicker {
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        font-size: 0.72rem;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.75);
+      }
+
+      .vsl-title {
+        font-size: 1.4rem;
+        font-weight: 700;
+        line-height: 1.2;
+      }
+
+      .vsl-subtitle {
+        font-size: 1rem;
+        color: rgba(255, 255, 255, 0.88);
+      }
+
+      .vsl-play {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        padding: 0.55rem 1.1rem;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.16);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        font-weight: 700;
+        width: fit-content;
+      }
+
+      .vsl-play-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.95);
+        color: #101526;
+        display: inline-flex;
         align-items: center;
         justify-content: center;
-        padding: 1.5rem;
-        text-align: center;
-        color: #f8f4f0;
-        font-weight: 600;
-        letter-spacing: 0.4px;
+        font-size: 1rem;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
       }
 
       .vsl-note {
@@ -393,6 +466,23 @@
           grid-template-columns: 1fr;
         }
 
+        .vsl-cover {
+          padding: 1.6rem;
+          align-items: center;
+        }
+
+        .vsl-cover-content {
+          max-width: 100%;
+        }
+
+        .vsl-title {
+          font-size: 1.2rem;
+        }
+
+        .vsl-subtitle {
+          font-size: 0.95rem;
+        }
+
         .bio-grid {
           grid-template-columns: 1fr;
         }
@@ -462,8 +552,29 @@
       <section class="section" id="vsl">
         <div class="container vsl-grid">
           <div class="vsl-frame">
-            <div class="vsl-placeholder">
-              VSL placeholder: paste your video embed or iframe here.
+            <div class="vsl-embed">
+              <iframe
+                title="The Thaw Method overview video"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+                data-src="https://www.youtube.com/embed/vU2zDjprdDU?rel=0&modestbranding=1&playsinline=1"
+              ></iframe>
+              <a
+                class="vsl-cover"
+                href="https://www.youtube.com/watch?v=vU2zDjprdDU"
+                aria-label="Play the overview video"
+              >
+                <span class="vsl-cover-content">
+                  <span class="vsl-kicker">3-minute overview</span>
+                  <span class="vsl-title">Why freeze happens - and how to thaw gently</span>
+                  <span class="vsl-subtitle">Discover your Freeze Signature and a calm, personalized plan.</span>
+                  <span class="vsl-play">
+                    <span class="vsl-play-icon" aria-hidden="true">></span>
+                    Play video
+                  </span>
+                </span>
+              </a>
             </div>
           </div>
           <div>
@@ -765,5 +876,25 @@
         Copyright - All Rights Reserved | Healing Cosmos
       </div>
     </footer>
+    <script>
+      const vslEmbed = document.querySelector(".vsl-embed");
+      if (vslEmbed) {
+        const iframe = vslEmbed.querySelector("iframe");
+        const cover = vslEmbed.querySelector(".vsl-cover");
+        const baseSrc = iframe ? iframe.getAttribute("data-src") : "";
+
+        if (iframe && cover && baseSrc) {
+          cover.addEventListener("click", (event) => {
+            event.preventDefault();
+            if (!iframe.src) {
+              iframe.src = `${baseSrc}&autoplay=1`;
+            }
+            cover.classList.add("is-hidden");
+            cover.setAttribute("aria-hidden", "true");
+            cover.setAttribute("tabindex", "-1");
+          });
+        }
+      }
+    </script>
   </body>
 </html>
